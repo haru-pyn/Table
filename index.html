@@ -2,9 +2,54 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>hello</title>
+        <title>calendar</title>
+        <link rel="stylesheet" href="./style.css">
     </head>
+
     <bldy>
-        Hello,world
+        <div id="table">
+          <div class="title">
+            <div class='column' @click='previousMonth'>前の月</div>
+            <div class='column bigfont'>{{ calendarYear }}年{{ calendarMonth }}月</div>
+            <div class='column' @click='nextMonth'>次の月</div>
+          </div>  
+            <table>
+              <thead>
+                <tr>
+                  <th>月</th>
+                  <th>火</th>
+                  <th>水</th>
+                  <th>木</th>
+                  <th>金</th>
+                  <th>土</th>
+                  <th>日</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td v-for='date in monthlyCalendar[0]' :key='date.id'>{{ date }}</td>
+                </tr>
+                <tr>
+                  <td v-for='date in monthlyCalendar[1]' :key='date.id'>{{ date }}</td>
+                </tr>
+                <tr>
+                  <td v-for='date in monthlyCalendar[2]' :key='date.id'>{{ date }}</td>
+                </tr>
+                <tr>
+                  <td v-for='date in monthlyCalendar[3]' :key='date.id'>{{ date }}</td>
+                </tr>
+                <tr v-if='monthlyCalendar[4]'>
+                  <td v-for='date in monthlyCalendar[4]' :key='date.id'>{{ date }}</td>
+                </tr>
+                <tr v-if='monthlyCalendar[5]'>
+                  <td v-for='date in monthlyCalendar[5]' :key='date.id'>{{ date }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        
+  <!-- Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script src="./main.js"></script>
     </bldy>
 </html>
